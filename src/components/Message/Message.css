@@ -1,0 +1,15 @@
+.block {
+  margin: 0 auto;
+}
+.title {
+  font-size: 60px;
+  color: #61dafb;
+  text-align: center;
+}
+
+.text {
+  margin: 20px auto 0 auto;
+  width: 1220px;
+  font-size: 30px;
+  text-align: center;
+}
