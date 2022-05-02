@@ -1,11 +1,6 @@
 import React, { FC } from "react";
 import "./Message.css";
 
-export interface MessageProps {
-  title: string;
-  text: string;
-}
-
 export const Message: FC = () => {
   const title = "React";
   const text =
