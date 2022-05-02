@@ -8,6 +8,7 @@ export class Message extends Component {
     this.text =
       "JavaScript-библиотека для создания пользовательских интерфейсов";
   }
+
   render() {
     return (
       <div className="block">
