@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import "./Messange.css";
 
 export const Message = ({ author, text, date, time }) => {

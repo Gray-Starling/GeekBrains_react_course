@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MessageRender } from "./MessageRender/MessageRender";
 import { FormUi } from "../../FormUi/FormUi";
 import "./ChatMessanger.css";
@@ -8,7 +8,6 @@ export const ChatMessanger = () => {
   const author = "Вы";
   const [messageList, setMessageList] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const focus = useRef(null);
 
   const message = {
     id: nanoid(),
