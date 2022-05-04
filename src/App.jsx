@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MessageRender } from "./components/MessageRender/MessageRender";
-import { Form } from "./components/Form/Form";
+// import { Form } from "./components/Form/Form";
+import { FormUi } from "./components/FormUi/FormUi";
 import { nanoid } from "nanoid";
 import "./App.css";
 
@@ -40,7 +41,7 @@ export const App = () => {
     <div className="container">
       <p className="title">Привет! Это поле для сообщений</p>
       <MessageRender messageList={messageList} />
-      <Form
+      <FormUi
         value={inputValue}
         onChange={(ev) => {
           setInputValue(ev.target.value);
