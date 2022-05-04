@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { MessageRender } from "./MessageRender/MessageRender";
 import { FormUi } from "../../FormUi/FormUi";
 import "./ChatMessanger.css";
-
 import { nanoid } from "nanoid";
 
 export const ChatMessanger = () => {
