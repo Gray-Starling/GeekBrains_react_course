@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Paper } from "@material-ui/core";
-import { Message } from "../Message/Message";
+import { Message } from "../Messange/Messange";
 import "./MessageRender.css";
 
 export const MessageRender = (props) => {
