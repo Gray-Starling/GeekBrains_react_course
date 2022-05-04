@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MessageRender } from "./MessageRender/MessageRender";
 import { FormUi } from "../../FormUi/FormUi";
+import "./ChatMessanger.css";
 
 import { nanoid } from "nanoid";
 
@@ -22,11 +23,6 @@ export const ChatMessanger = () => {
     ev.preventDefault();
     setMessageList([...messageList, message]);
     setInputValue("");
-
-    //! автофокус без использования mui, удалить если буду использовать mui в дальнешем
-    // if (null !== focus.current) {
-    //   focus.current.focus();
-    // }
   };
 
   useEffect(() => {
@@ -38,9 +34,8 @@ export const ChatMessanger = () => {
     }
   }, [messageList]);
   return (
-    <div className="container">
+    <div className="chat-container">
       <p className="title">Привет! Это поле для сообщений</p>
-      <MessageRender messageList={messageList} />
       <FormUi
         value={inputValue}
         onChange={(ev) => {
@@ -49,6 +44,7 @@ export const ChatMessanger = () => {
         onSubmit={addMessage}
         type="submit"
       />
+      <MessageRender messageList={messageList} />
     </div>
   );
 };
