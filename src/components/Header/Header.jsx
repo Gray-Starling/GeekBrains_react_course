@@ -1,30 +1,19 @@
 import React from "react";
 import "./Header.css";
-import { Link, makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  link: {
-    color: "#fff",
-    textDecoration: "none",
-  },
-});
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export const Header = () => {
-  const style = useStyles();
   return (
-    <header className="header">
-      <div className="logo">Лого здесь</div>
-      <nav className="nav">
-        <Link className={style.link} href="#">
-          Link 1
-        </Link>
-        <Link className={style.link} href="#">
-          Link 2
-        </Link>
-        <Link className={style.link} href="#">
-          Link 3
-        </Link>
-      </nav>
-    </header>
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton size="large" edge="start" color="inherit" aria-label="menu">
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h5" component="span" sx={{ flexGrow: 2 }}>
+          Real Chat
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
