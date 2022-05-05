@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { MessageRender } from "./MessageRender/MessageRender";
 import { SnackBar } from "../../SnackBar/SnackBar";
 import { FormUi } from "../../FormUi/FormUi";
-import "./ChatMessanger.css";
 import { nanoid } from "nanoid";
 import { Container } from "@mui/material";
 

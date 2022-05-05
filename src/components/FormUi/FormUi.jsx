@@ -1,5 +1,4 @@
 import React from "react";
-import "./FormUi.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Box, Button, TextField, Typography } from "@mui/material";
 

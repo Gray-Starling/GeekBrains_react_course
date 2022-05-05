@@ -1,5 +1,4 @@
 import React from "react";
-import "./Main.css";
 import { ChatsNav } from "./ChatsNav/ChatsNav";
 import { ChatMessanger } from "./ChatMessanger/ChatMessanger";
 import { Box } from "@mui/material";
