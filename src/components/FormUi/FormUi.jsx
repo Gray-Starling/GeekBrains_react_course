@@ -1,12 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Box, Button, TextField, Typography } from "@mui/material";
 
-export const FormUi = (props) => {
+export const FormUi = ({ value, onChange, type, onSubmit }) => {
   return (
     <Box
       component="form"
-      onSubmit={props.onSubmit}
+      onSubmit={onSubmit}
       sx={{
         display: "flex",
         justifyContent: "space-between",
@@ -29,14 +30,14 @@ export const FormUi = (props) => {
           variant="outlined"
           autoFocus={true}
           sx={{ bgcolor: "#fff" }}
-          value={props.value}
-          onChange={props.onChange}
+          value={value}
+          onChange={onChange}
         />
       </Box>
 
       <Button
-        value={props.value}
-        type={props.type}
+        value={value}
+        type={type}
         variant="contained"
         sx={{ ml: 3, height: 50, bgcolor: "#fff" }}
       >
@@ -44,4 +45,11 @@ export const FormUi = (props) => {
       </Button>
     </Box>
   );
+};
+
+FormUi.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  type: PropTypes.string,
+  onSubmit: PropTypes.func,
 };

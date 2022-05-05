@@ -1,15 +1,16 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Box, Typography } from "@mui/material";
 import { Message } from "../Messange/Messange";
 
-export const MessageRender = (props) => {
+export const MessageRender = ({ messageList }) => {
   const myRef = useRef(null);
 
   useEffect(() => {
-    if (props.messageList.length && myRef && myRef.current) {
+    if (messageList.length && myRef && myRef.current) {
       myRef.current.scrollIntoView();
     }
-  }, [props.messageList.length]);
+  }, [messageList.length]);
   return (
     <Box
       sx={{
@@ -23,9 +24,9 @@ export const MessageRender = (props) => {
         mt: 3,
       }}
     >
-      {props.messageList.length ? (
+      {messageList.length ? (
         <div className="container_full">
-          {props.messageList.map((item) => (
+          {messageList.map((item) => (
             <Message
               author={item.author}
               text={item.text}
@@ -43,4 +44,8 @@ export const MessageRender = (props) => {
       )}
     </Box>
   );
+};
+
+MessageRender.propTypes = {
+  messageList: PropTypes.func,
 };

@@ -1,5 +1,6 @@
-import { Snackbar, Alert } from "@mui/material";
 import React from "react";
+import PropTypes from "prop-types";
+import { Snackbar, Alert } from "@mui/material";
 
 export const SnackBar = ({ isOpen, handleClose }) => {
   return (
@@ -7,4 +8,9 @@ export const SnackBar = ({ isOpen, handleClose }) => {
       <Alert severity="success">Сообщение отправленно!</Alert>
     </Snackbar>
   );
+};
+
+SnackBar.propTypes = {
+  isOpen: PropTypes.func,
+  handleClose: PropTypes.func,
 };

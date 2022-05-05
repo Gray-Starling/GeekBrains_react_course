@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Messange.css";
 
 export const Message = ({ author, text, date, time }) => {
@@ -18,4 +19,11 @@ export const Message = ({ author, text, date, time }) => {
       </div>
     </div>
   );
+};
+
+Message.propTypes = {
+  author: PropTypes.string,
+  text: PropTypes.string,
+  date: PropTypes.string,
+  time: PropTypes.string,
 };
