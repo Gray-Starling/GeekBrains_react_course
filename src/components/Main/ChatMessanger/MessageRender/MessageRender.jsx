@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { Message } from "../Messange/Messange";
-import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import "./MessageRender.css";
 
 export const MessageRender = (props) => {
