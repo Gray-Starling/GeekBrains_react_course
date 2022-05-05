@@ -1,30 +1,48 @@
 import React from "react";
 import "./FormUi.css";
-import { Button, TextField } from "@material-ui/core";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 export const FormUi = (props) => {
   return (
-    <form onSubmit={props.onSubmit}>
-      <div className="input">
+    <Box
+      component="form"
+      onSubmit={props.onSubmit}
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        border: "2px solid #fff",
+        p: 2,
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+        }}
+      >
+        <Typography variant="h5" component="span" sx={{ color: "#fff" }}>
+          Введите ваше сообщение
+        </Typography>
         <TextField
-          id="outlined-basic"
           variant="outlined"
           autoFocus={true}
+          sx={{ bgcolor: "#fff" }}
           value={props.value}
           onChange={props.onChange}
-          style={{ width: 900 }}
         />
+      </Box>
 
-        <Button
-          value={props.value}
-          type={props.type}
-          variant="contained"
-          sx={{ margin: "0 0 0 30px" }}
-        >
-          <ArrowForwardIosIcon></ArrowForwardIosIcon>
-        </Button>
-      </div>
-    </form>
+      <Button
+        value={props.value}
+        type={props.type}
+        variant="contained"
+        sx={{ ml: 3, height: 50, bgcolor: "#fff" }}
+      >
+        <ArrowForwardIosIcon sx={{ color: "#000" }}></ArrowForwardIosIcon>
+      </Button>
+    </Box>
   );
 };

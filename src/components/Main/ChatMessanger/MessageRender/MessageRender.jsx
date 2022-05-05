@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { Paper } from "@material-ui/core";
+import { Box, Typography } from "@mui/material";
 import { Message } from "../Messange/Messange";
+import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import "./MessageRender.css";
 
 export const MessageRender = (props) => {
@@ -12,7 +13,18 @@ export const MessageRender = (props) => {
     }
   }, [props.messageList.length]);
   return (
-    <Paper elevation={3}>
+    <Box
+      sx={{
+        color: "#000",
+        bgcolor: "#fff",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "70%",
+        mt: 3,
+      }}
+    >
       {props.messageList.length ? (
         <div className="container_full">
           {props.messageList.map((item) => (
@@ -27,12 +39,10 @@ export const MessageRender = (props) => {
           <span ref={myRef}></span>
         </div>
       ) : (
-        <div className="container">
-          <div className="empty_msg">
-            Сообщений пока нет! Напишите что-нибудь в поле выше и нажмите Enter
-          </div>
-        </div>
+        <Typography variant="h6" component="span">
+          Сообщений пока нет! Напишите что-нибудь в поле выше и нажмите Enter
+        </Typography>
       )}
-    </Paper>
+    </Box>
   );
 };

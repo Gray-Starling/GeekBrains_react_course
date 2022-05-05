@@ -1,22 +1,12 @@
-.container {
-  background-color: #74a7da;
-}
-
 .container_full {
   margin: 20px auto;
   padding: 10px;
-  width: 950px;
-  max-height: 500px;
+  width: 100%;
+
+  height: 380px;
   overflow: auto;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
-
-.empty_msg {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  padding: 15px;
 }

@@ -3,6 +3,7 @@ import { MessageRender } from "./MessageRender/MessageRender";
 import { FormUi } from "../../FormUi/FormUi";
 import "./ChatMessanger.css";
 import { nanoid } from "nanoid";
+import { Container } from "@mui/material";
 
 export const ChatMessanger = () => {
   const author = "Вы";
@@ -32,8 +33,14 @@ export const ChatMessanger = () => {
     }
   }, [messageList]);
   return (
-    <div className="chat-container">
-      <p className="title">Привет! Это поле для сообщений</p>
+    <Container
+      sx={{
+        height: 600,
+        bgcolor: "primary.main",
+        borderRadius: 3,
+        pt: 2,
+      }}
+    >
       <FormUi
         value={inputValue}
         onChange={(ev) => {
@@ -43,6 +50,6 @@ export const ChatMessanger = () => {
         type="submit"
       />
       <MessageRender messageList={messageList} />
-    </div>
+    </Container>
   );
 };

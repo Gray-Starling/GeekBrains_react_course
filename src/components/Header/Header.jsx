@@ -1,18 +1,18 @@
 import React from "react";
-import "./Header.css";
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
+
+import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 export const Header = () => {
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h5" component="span">
+          Real Chat
+        </Typography>
         <IconButton size="large" edge="start" color="inherit" aria-label="menu">
           <MenuIcon />
         </IconButton>
-        <Typography variant="h5" component="span" sx={{ flexGrow: 2 }}>
-          Real Chat
-        </Typography>
       </Toolbar>
     </AppBar>
   );

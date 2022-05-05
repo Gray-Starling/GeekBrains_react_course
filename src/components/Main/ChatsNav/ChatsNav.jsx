@@ -1,44 +1,43 @@
 import React from "react";
 import { chatList } from "./constants";
 import {
+  Box,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
   Typography,
+  Divider,
 } from "@mui/material";
-import { makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  list: {
-    backgroundColor: "#000",
-    width: "300px",
-    color: "#fff",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "0",
-  },
-  typography: {
-    color: "#fff",
-  },
-});
 
 export const ChatsNav = () => {
-  const style = useStyles();
   return (
-    <List className={style.list}>
-      <Typography className={style.typography} component="span" variant="h5">
-        Список чатов
-      </Typography>
-      {chatList.map((item) => (
-        <ListItem key={item.id}>
-          <ListItemButton>
-            <ListItemText primary={item.name} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+    <Box
+      sx={{
+        bgcolor: "primary.main",
+        color: "#fff",
+        ml: 1,
+        width: 300,
+        borderRadius: 3,
+        border: "5px solid #0059B2",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <List>
+        <Typography component="span" variant="h5">
+          Список чатов
+        </Typography>
+        <Divider sx={{ height: 5, bgcolor: "#0059B2", mt: 1 }} />
+        {chatList.map((item) => (
+          <ListItem key={item.id} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={item.name} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 };
