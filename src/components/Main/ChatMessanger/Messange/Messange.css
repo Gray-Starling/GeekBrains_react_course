@@ -1,27 +1,27 @@
 .msg_block {
   margin: 0;
-  width: 80%;
+  width: 100%;
   background-color: #1976d2;
-  border: 2px solid #fff;
   font-size: 12px;
   font-weight: 400;
+  margin: 5px 0;
 }
 .msg_header {
   padding: 5px;
 }
 .msg_author {
   color: #fff;
+  font-size: 18px;
 }
 .msg_author_user {
-  color: aquamarine;
+  color: #000;
 }
 .msg_text {
   margin: 0 5px;
   padding: 5px;
   background-color: #fff;
-  border-radius: 20px;
-  font-size: 18px;
-  color: #1976d2;
+  font-size: 22px;
+  color: #000;
 }
 .msg_footer {
   display: flex;

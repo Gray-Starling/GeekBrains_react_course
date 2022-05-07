@@ -1,13 +1,8 @@
-import React, { FC } from "react";
-import "./Message.css";
-export interface MessageProps {
-  author: string;
-  text: string;
-  date: string;
-  time: string;
-}
+import React from "react";
+import PropTypes from "prop-types";
+import "./Messange.css";
 
-export const Message: FC<MessageProps> = ({ author, text, date, time }) => {
+export const Message = ({ author, text, date, time }) => {
   return (
     <div className="msg_block">
       <div className="msg_header">
@@ -24,4 +19,11 @@ export const Message: FC<MessageProps> = ({ author, text, date, time }) => {
       </div>
     </div>
   );
+};
+
+Message.propTypes = {
+  author: PropTypes.string,
+  text: PropTypes.string,
+  date: PropTypes.string,
+  time: PropTypes.string,
 };

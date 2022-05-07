@@ -19,7 +19,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "react/prop-types": 0,
+    "react/prop-types": "error",
     "react/jsx-uses-vars": "error",
     "react/jsx-uses-react": "error",
     "no-console": "error"
