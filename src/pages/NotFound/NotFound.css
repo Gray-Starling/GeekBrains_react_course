@@ -1,0 +1,17 @@
+.wrp {
+  text-align: center;
+}
+.error {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.error-comfort {
+  text-transform: uppercase;
+  font-size: 36px;
+}
+
+.error-description {
+  margin-top: 10vh;
+  font-size: 30px;
+}
