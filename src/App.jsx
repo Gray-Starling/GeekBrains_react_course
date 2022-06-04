@@ -7,9 +7,6 @@ import { ChatList } from "./pages/ChatList/ChatList";
 import { Profile } from "./pages/Profile/Profile";
 import { ChatPage } from "./components/ChatPage/ChatPage";
 
-// import { Header } from "./components/Header/Header";
-// import { Main } from "./components/Main/Main";
-
 export const App = () => {
   return (
     <>
@@ -22,8 +19,6 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-      {/* <Header />
-      <Main /> */}
     </>
   );
 };

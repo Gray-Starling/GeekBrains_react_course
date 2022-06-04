@@ -40,6 +40,8 @@
 .messenger-area-wrp {
   width: 100%;
   text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .messenger-text-area {
   width: 100%;

@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 
-export const chatListArray = [
+export let chatListArray = [
   {
     id: nanoid(),
     name: "general",
