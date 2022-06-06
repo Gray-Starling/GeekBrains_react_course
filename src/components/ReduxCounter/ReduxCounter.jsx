@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ReduxCounter = () => {
-  const value = useSelector((state) => state.count);
+  const value = useSelector((state) => state.count.count);
   const dispatch = useDispatch();
   return (
     <div

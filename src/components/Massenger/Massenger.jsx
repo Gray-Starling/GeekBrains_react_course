@@ -2,54 +2,70 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import "./Massenger.css";
+import { useSelector, useDispatch } from "react-redux";
 
+/**
+ * Компонент рендерит область чата и функцияю отправки сообшения
+ * @param {*} title - принемает значение из Router. название и адресс страницы
+ */
 export const Massenger = ({ title }) => {
   const author = "You";
-  const [messageList, setMessageList] = useState([]);
+  const messageList = useSelector((state) => state.messageList.messageList);
   const [inputValue, setInputValue] = useState("");
   const myRef = useRef(null);
+  const dispatch = useDispatch();
+
+  /**
+   * возвращает массив сообщений относящихся к определенной странице
+   */
+  const messages = messageList.filter((msg) => {
+    return msg.attachedToChat === title;
+  });
 
   const message = {
     id: nanoid(),
+    attachedToChat: title,
     author: author,
-    text: inputValue,
+    value: inputValue,
     date: new Date().toLocaleString().split(",")[0],
     time: new Date().toLocaleTimeString().slice(0, -3),
   };
 
+  const messageFromBot = {
+    id: nanoid(),
+    attachedToChat: title,
+    author: "Bot",
+    value: "I can't answer you yet",
+    date: new Date().toLocaleString().split(",")[0],
+    time: new Date().toLocaleTimeString().slice(0, -3),
+  };
+
+  /**
+   * Добавляет сообщение в массив сообщений из инпута
+   * @param {*} ev - ev.preventDefault();
+   */
   const addMessage = (ev) => {
     ev.preventDefault();
-    setMessageList([...messageList, message]);
+    dispatch({ type: "addMsg", payload: message });
     setInputValue("");
   };
 
-  const clearMessageList = () => {
-    setMessageList([]);
-    setInputValue("");
+  /**
+   * Добавляет ответ бота в массив сообщений
+   */
+  const addMessageFromBot = () => {
+    dispatch({ type: "addMsgFromBot", payload: messageFromBot });
   };
 
   useEffect(() => {
     const lastMessage = messageList[messageList.length - 1];
     if (messageList.length && lastMessage.author === "You") {
       const timer = setTimeout(() => {
-        setMessageList([
-          ...messageList,
-          {
-            id: nanoid(),
-            author: "Bot",
-            text: "Thank you for your message!",
-            date: new Date().toLocaleString().split(",")[0],
-            time: new Date().toLocaleTimeString().slice(0, -3),
-          },
-        ]);
+        addMessageFromBot();
       }, 1500);
       return () => clearTimeout(timer);
     }
   }, [messageList.length]);
-
-  useEffect(() => {
-    clearMessageList();
-  }, [title]);
 
   useEffect(() => {
     if (messageList.length && myRef && myRef.current) {
@@ -80,15 +96,15 @@ export const Massenger = ({ title }) => {
           <input value="Send" type="submit" />
         </form>
         <div className="messenger-area-wrp">
-          {messageList.length ? (
+          {messages.length ? (
             <div className="messenger-text-area">
-              {messageList.map((item) => (
+              {messages.map((item) => (
                 <div className="messenger-text-box" key={item.id}>
                   <div className="messenger-author-and-text">
                     <span className="messenger-text-author">
                       {item.author}:
                     </span>
-                    <span className="messenger-text-value">{item.text}</span>
+                    <span className="messenger-text-value">{item.value}</span>
                   </div>
                 </div>
               ))}
