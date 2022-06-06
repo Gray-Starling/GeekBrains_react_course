@@ -1,0 +1,36 @@
+.chat-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.chat-page-nav {
+  margin-top: 30px;
+}
+
+.chat-page-title {
+  font-size: 30px;
+}
+.chat-page-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-page-link {
+  width: 200px;
+  margin: 2px 0;
+  padding: 10px 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: right;
+  background-color: #1240ab;
+  color: #ffaa00;
+  transition: all 0.3s 0s ease;
+}
+
+.chat-page-link:hover {
+  padding: 10px 15px;
+  background-color: #ffaa00;
+  color: #1240ab;
+  /* transform: rotate(180deg); */
+}

@@ -22,6 +22,6 @@
     "react/prop-types": "error",
     "react/jsx-uses-vars": "error",
     "react/jsx-uses-react": "error",
-    "no-console": "error"
+    "no-console": 1
   }
 }
