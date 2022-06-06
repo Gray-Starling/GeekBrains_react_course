@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Massenger } from "../Massenger/Massenger";
 import { CreateChat } from "../CreateChat/CreateChat";
+import { getListOfChats } from "../../redux/reducers/chatReducer/chat-selectors";
 
 import "./ChatPage.css";
 
@@ -15,7 +16,7 @@ import "./ChatPage.css";
 export const ChatPage = () => {
   const { title } = useParams();
   const [chatName, setChatName] = useState("");
-  const listOfChats = useSelector((state) => state.chatList.chatList);
+  const listOfChats = useSelector(getListOfChats);
   const dispatch = useDispatch();
 
   const handleChange = (ev) => setChatName(ev.target.value);

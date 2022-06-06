@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import "./Massenger.css";
 import { useSelector, useDispatch } from "react-redux";
+import { getMessageList } from "../../redux/reducers/messageReducer/messageSelectors";
 
 /**
  * Компонент рендерит область чата и функцияю отправки сообшения
@@ -10,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
  */
 export const Massenger = ({ title }) => {
   const author = "You";
-  const messageList = useSelector((state) => state.messageList.messageList);
+  const messageList = useSelector(getMessageList);
   const [inputValue, setInputValue] = useState("");
   const myRef = useRef(null);
   const dispatch = useDispatch();
