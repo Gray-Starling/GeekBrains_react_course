@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import "./Massenger.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessageList } from "../../redux/reducers/messageReducer/messageSelectors";
+import { add_Message, add_Message_From_Bot } from "../../redux/actions/actions";
 
 /**
  * Компонент рендерит область чата и функцияю отправки сообшения
@@ -45,13 +46,7 @@ export const Massenger = ({ title }) => {
    * Добавляет ответ бота в массив сообщений
    */
   const addMessageFromBot = () => {
-    dispatch({
-      type: "ADD_MESSAGE_FROM_BOT",
-      payload: messageFromBot,
-      meta: {
-        delay: 1500,
-      },
-    });
+    dispatch(add_Message_From_Bot(messageFromBot));
   };
 
   /**
@@ -61,7 +56,7 @@ export const Massenger = ({ title }) => {
    */
   const addMessage = (ev) => {
     ev.preventDefault();
-    dispatch({ type: "ADD_MESSAGE", payload: message });
+    dispatch(add_Message(message));
     setInputValue("");
     addMessageFromBot();
   };

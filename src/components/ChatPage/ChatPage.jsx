@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Massenger } from "../Massenger/Massenger";
 import { CreateChat } from "../CreateChat/CreateChat";
 import { getListOfChats } from "../../redux/reducers/chatReducer/chat-selectors";
+import { add_Chat, remove_Chat } from "../../redux/actions/actions";
 
 import "./ChatPage.css";
 
@@ -31,7 +32,7 @@ export const ChatPage = () => {
       id: nanoid(),
       name: chatName,
     };
-    dispatch({ type: "ADD_CHAT", payload: newChat });
+    dispatch(add_Chat(newChat));
     ev.preventDefault();
     setChatName("");
   };
@@ -41,7 +42,7 @@ export const ChatPage = () => {
    * @param {*} id - id чата в массиве чатов
    */
   const removeChatHandler = (id) => {
-    dispatch({ type: "DELETE_CHAT", payload: id });
+    dispatch(remove_Chat(id));
   };
 
   return (
