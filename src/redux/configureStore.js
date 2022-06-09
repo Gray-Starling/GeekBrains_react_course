@@ -1,4 +1,7 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import logger from "redux-logger";
+import { setTimerForMessageFromBot } from "./middleWare/messageFromBot";
 import { chatReducer } from "./reducers/chatReducer/chatReducer";
 import { countReducer } from "./reducers/countReducer/countReducer";
 import { messageReducer } from "./reducers/messageReducer/messageReducer";
@@ -9,5 +12,5 @@ export const store = createStore(
     chatList: chatReducer,
     messageList: messageReducer,
   }),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(logger, setTimerForMessageFromBot))
 );

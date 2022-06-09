@@ -31,7 +31,7 @@ export const ChatPage = () => {
       id: nanoid(),
       name: chatName,
     };
-    dispatch({ type: "addChat", payload: newChat });
+    dispatch({ type: "ADD_CHAT", payload: newChat });
     ev.preventDefault();
     setChatName("");
   };
@@ -41,7 +41,7 @@ export const ChatPage = () => {
    * @param {*} id - id чата в массиве чатов
    */
   const removeChatHandler = (id) => {
-    dispatch({ type: "delChat", payload: id });
+    dispatch({ type: "DELETE_CHAT", payload: id });
   };
 
   return (

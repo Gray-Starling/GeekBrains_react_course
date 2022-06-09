@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import { ADD_CHAT, DELETE_CHAT } from "../../actions/actionTypes";
 
 const initialState = {
   chatList: [
@@ -31,12 +32,12 @@ const initialState = {
 
 export const chatReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "delChat":
+    case DELETE_CHAT:
       return {
         ...state,
         chatList: state.chatList.filter((chat) => chat.id !== action.payload),
       };
-    case "addChat":
+    case ADD_CHAT:
       return {
         ...state,
         chatList: [...state.chatList, action.payload],

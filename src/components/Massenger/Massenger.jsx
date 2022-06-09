@@ -42,31 +42,29 @@ export const Massenger = ({ title }) => {
   };
 
   /**
+   * Добавляет ответ бота в массив сообщений
+   */
+  const addMessageFromBot = () => {
+    dispatch({
+      type: "ADD_MESSAGE_FROM_BOT",
+      payload: messageFromBot,
+      meta: {
+        delay: 1500,
+      },
+    });
+  };
+
+  /**
    * Добавляет сообщение в массив сообщений из инпута
+   * Вызывает функцию ответа бота
    * @param {*} ev - ev.preventDefault();
    */
   const addMessage = (ev) => {
     ev.preventDefault();
-    dispatch({ type: "addMsg", payload: message });
+    dispatch({ type: "ADD_MESSAGE", payload: message });
     setInputValue("");
+    addMessageFromBot();
   };
-
-  /**
-   * Добавляет ответ бота в массив сообщений
-   */
-  const addMessageFromBot = () => {
-    dispatch({ type: "addMsgFromBot", payload: messageFromBot });
-  };
-
-  useEffect(() => {
-    const lastMessage = messageList[messageList.length - 1];
-    if (messageList.length && lastMessage.author === "You") {
-      const timer = setTimeout(() => {
-        addMessageFromBot();
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [messageList.length]);
 
   useEffect(() => {
     if (messageList.length && myRef && myRef.current) {

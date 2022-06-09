@@ -13,9 +13,9 @@ export const ReduxCounter = () => {
         alignItems: "center",
       }}
     >
-      <button onClick={() => dispatch({ type: "decrease" })}>-</button>
+      <button onClick={() => dispatch({ type: "DECREASE_COUNT" })}>-</button>
       <span style={{ margin: "0 10px", fontSize: "44px" }}>{countValue}</span>
-      <button onClick={() => dispatch({ type: "increase" })}>+</button>
+      <button onClick={() => dispatch({ type: "INCREASE_COUNT" })}>+</button>
     </div>
   );
 };
