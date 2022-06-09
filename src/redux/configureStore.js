@@ -9,6 +9,11 @@ import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 
+let loggerLib;
+if (process.env.NODE_ENV === `development`) {
+  loggerLib = logger;
+}
+
 const persistConfig = {
   key: "root",
   storage,
@@ -24,7 +29,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(
   persistedReducer,
-  composeWithDevTools(applyMiddleware(logger, setTimerForMessageFromBot))
+  composeWithDevTools(applyMiddleware(loggerLib, setTimerForMessageFromBot))
 );
 
 export const persistor = persistStore(store);
