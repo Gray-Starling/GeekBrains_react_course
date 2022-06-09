@@ -1,30 +1,47 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import { useParams, Link } from "react-router-dom";
-import { chatListArray } from "../constants/chatListArray";
+import { useDispatch, useSelector } from "react-redux";
 import { Massenger } from "../Massenger/Massenger";
 import { CreateChat } from "../CreateChat/CreateChat";
+import { getListOfChats } from "../../redux/reducers/chatReducer/chat-selectors";
 
 import "./ChatPage.css";
 
+/**
+ * Компонет рендерит список чатов.
+ * Реализованны функции добавления/удаления чата
+ * Рендерит область чата в зависимости от выбранного чата
+ */
 export const ChatPage = () => {
   const { title } = useParams();
-  const [listOfChats, addChatToList] = useState(chatListArray);
   const [chatName, setChatName] = useState("");
+  const listOfChats = useSelector(getListOfChats);
+  const dispatch = useDispatch();
 
+  const handleChange = (ev) => setChatName(ev.target.value);
+
+  /**
+   * Функция добавляет новый чат.
+   * Обнуляет chatName в инпуте
+   * @param {*} ev - ev.preventDefault();
+   */
   const addChatHandler = (ev) => {
     let newChat = {
       id: nanoid(),
       name: chatName,
     };
+    dispatch({ type: "addChat", payload: newChat });
     ev.preventDefault();
-    addChatToList((prev) => [...prev, newChat]);
     setChatName("");
   };
 
+  /**
+   * Удаляем чат по его id
+   * @param {*} id - id чата в массиве чатов
+   */
   const removeChatHandler = (id) => {
-    let temporaryChatList = listOfChats.filter((item) => item.id !== id);
-    addChatToList(temporaryChatList);
+    dispatch({ type: "delChat", payload: id });
   };
 
   return (
@@ -34,10 +51,11 @@ export const ChatPage = () => {
           <div className="chat-page-list">
             <CreateChat
               onSubmit={addChatHandler}
-              onChange={(ev) => setChatName(ev.target.value)}
+              onChange={handleChange}
               className="chat-page-form"
               value={chatName}
             />
+
             {listOfChats.map((item) => {
               return (
                 <div className="chat-page-link-wrp" key={item.id}>

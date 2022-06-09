@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getCountValue } from "../../redux/reducers/countReducer/count-selectors";
 
 export const ReduxCounter = () => {
-  const value = useSelector((state) => state.count);
+  const countValue = useSelector(getCountValue);
   const dispatch = useDispatch();
   return (
     <div
@@ -13,7 +14,7 @@ export const ReduxCounter = () => {
       }}
     >
       <button onClick={() => dispatch({ type: "decrease" })}>-</button>
-      <span style={{ margin: "0 10px", fontSize: "44px" }}>{value}</span>
+      <span style={{ margin: "0 10px", fontSize: "44px" }}>{countValue}</span>
       <button onClick={() => dispatch({ type: "increase" })}>+</button>
     </div>
   );
