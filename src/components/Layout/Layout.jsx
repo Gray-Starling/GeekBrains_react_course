@@ -12,6 +12,7 @@ export const Layout = () => {
           <CustomLink to="/">Home</CustomLink>
           <CustomLink to="/chatlist">Chats</CustomLink>
           <CustomLink to="/profile">Profile</CustomLink>
+          <CustomLink to="/count">Count</CustomLink>
         </div>
       </header>
       <main className="main">

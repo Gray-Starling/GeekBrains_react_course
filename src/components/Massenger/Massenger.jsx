@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import "./Massenger.css";
 
 export const Massenger = ({ title }) => {
-  const author = "Вы";
+  const author = "You";
   const [messageList, setMessageList] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const myRef = useRef(null);
 
   const message = {
     id: nanoid(),
@@ -29,14 +30,14 @@ export const Massenger = ({ title }) => {
 
   useEffect(() => {
     const lastMessage = messageList[messageList.length - 1];
-    if (messageList.length && lastMessage.author === "Вы") {
+    if (messageList.length && lastMessage.author === "You") {
       const timer = setTimeout(() => {
         setMessageList([
           ...messageList,
           {
             id: nanoid(),
             author: "Bot",
-            text: "Спасибо за ваше сообщение!",
+            text: "Thank you for your message!",
             date: new Date().toLocaleString().split(",")[0],
             time: new Date().toLocaleTimeString().slice(0, -3),
           },
@@ -44,11 +45,17 @@ export const Massenger = ({ title }) => {
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [messageList]);
+  }, [messageList.length]);
 
   useEffect(() => {
     clearMessageList();
   }, [title]);
+
+  useEffect(() => {
+    if (messageList.length && myRef && myRef.current) {
+      myRef.current.scrollIntoView();
+    }
+  }, [messageList.length]);
   return (
     <div className="messenger-wrp">
       <p className="messenger-title">Welcome to the {`"${title}"`} chat room</p>
@@ -85,6 +92,7 @@ export const Massenger = ({ title }) => {
                   </div>
                 </div>
               ))}
+              <span ref={myRef}></span>
             </div>
           ) : (
             <span>
