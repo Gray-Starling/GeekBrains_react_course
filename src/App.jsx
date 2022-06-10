@@ -7,6 +7,7 @@ import { ChatList } from "./pages/ChatList/ChatList";
 import { Profile } from "./pages/Profile/Profile";
 import { ChatPage } from "./components/ChatPage/ChatPage";
 import { Count } from "./pages/Count/Count";
+import { ReactApi } from "./pages/ReactApi/ReactApi";
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
           <Route path="/chatlist/:title" element={<ChatPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/count" element={<Count />} />
+          <Route path="/react-api" element={<ReactApi />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
