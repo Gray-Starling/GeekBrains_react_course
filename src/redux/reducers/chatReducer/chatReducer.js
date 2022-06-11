@@ -1,6 +1,9 @@
 import { nanoid } from "nanoid";
 import { ADD_CHAT, DELETE_CHAT } from "../../actions/actionTypes";
 
+/**
+ * Стейт, который в дальнейшем использует Редюсер
+ */
 const initialState = {
   chatList: [
     {
@@ -30,6 +33,11 @@ const initialState = {
   ],
 };
 
+/**
+ * Функционал работы со списком чатов
+ * @returns DELETE_CHAT - удаляет чат из списка
+ * @returns ADD_CHAT - добавляет чат в список
+ */
 export const chatReducer = (state = initialState, action) => {
   switch (action.type) {
     case DELETE_CHAT:

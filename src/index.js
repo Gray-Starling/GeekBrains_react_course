@@ -13,11 +13,11 @@ if (rootElement) {
   createRoot(rootElement).render(
     <BrowserRouter>
       <Provider store={store}>
-        {/* <PersistGate persistor={persistor}> */}
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-        {/* </PersistGate> */}
+        <PersistGate persistor={persistor}>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   );

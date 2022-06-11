@@ -1,11 +1,11 @@
 import React from "react";
-import { GetCatsApi } from "../../components/GetCatsApi/GetCatsApi";
+import { PostApi } from "../../components/PostsApi/PostsApi";
 
 export const ReactApi = () => {
   return (
     <div className="wrp">
       <p className="title">React Api</p>
-      <GetCatsApi />
+      <PostApi />
     </div>
   );
 };
