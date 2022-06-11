@@ -1,10 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountValue } from "../../redux/reducers/countReducer/count-selectors";
+import { decrease_Count, increase_Count } from "../../redux/actions/actions";
 
 export const ReduxCounter = () => {
   const countValue = useSelector(getCountValue);
   const dispatch = useDispatch();
+
+  const decreaseCountValue = () => {
+    dispatch(decrease_Count());
+  };
+
+  const increaseCountValue = () => {
+    dispatch(increase_Count());
+  };
+
   return (
     <div
       style={{
@@ -13,9 +23,9 @@ export const ReduxCounter = () => {
         alignItems: "center",
       }}
     >
-      <button onClick={() => dispatch({ type: "decrease" })}>-</button>
+      <button onClick={decreaseCountValue}>-</button>
       <span style={{ margin: "0 10px", fontSize: "44px" }}>{countValue}</span>
-      <button onClick={() => dispatch({ type: "increase" })}>+</button>
+      <button onClick={increaseCountValue}>+</button>
     </div>
   );
 };

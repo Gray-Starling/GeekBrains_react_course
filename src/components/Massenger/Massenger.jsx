@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import "./Massenger.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessageList } from "../../redux/reducers/messageReducer/messageSelectors";
+import { add_Message, add_Message_From_Bot } from "../../redux/actions/actions";
 
 /**
  * Компонент рендерит область чата и функцияю отправки сообшения
@@ -42,31 +43,23 @@ export const Massenger = ({ title }) => {
   };
 
   /**
+   * Добавляет ответ бота в массив сообщений
+   */
+  const addMessageFromBot = () => {
+    dispatch(add_Message_From_Bot(messageFromBot));
+  };
+
+  /**
    * Добавляет сообщение в массив сообщений из инпута
+   * Вызывает функцию ответа бота
    * @param {*} ev - ev.preventDefault();
    */
   const addMessage = (ev) => {
     ev.preventDefault();
-    dispatch({ type: "addMsg", payload: message });
+    dispatch(add_Message(message));
     setInputValue("");
+    addMessageFromBot();
   };
-
-  /**
-   * Добавляет ответ бота в массив сообщений
-   */
-  const addMessageFromBot = () => {
-    dispatch({ type: "addMsgFromBot", payload: messageFromBot });
-  };
-
-  useEffect(() => {
-    const lastMessage = messageList[messageList.length - 1];
-    if (messageList.length && lastMessage.author === "You") {
-      const timer = setTimeout(() => {
-        addMessageFromBot();
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [messageList.length]);
 
   useEffect(() => {
     if (messageList.length && myRef && myRef.current) {
