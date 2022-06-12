@@ -17,12 +17,16 @@ export const PostApi = () => {
     dispatch(loadPosts());
   }, []);
 
+  const handleError = () => {
+    dispatch(loadPosts());
+  };
+
   if (error) {
     return (
       <div>
         <p>Произошла ошибка</p>
         <p>{error}</p>
-        <button onClick={loadPosts}> Попробовать еще раз</button>
+        <button onClick={handleError}> Попробовать еще раз</button>
       </div>
     );
   }
