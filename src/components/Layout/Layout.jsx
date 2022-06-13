@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { CustomLink } from "../CustomLink/CustomLink";
 import "./Layout.css";
+import { AuthStatusLayout } from "../AuthStatusLayout/AuthStatusLayout";
 
 export const Layout = () => {
   return (
@@ -14,8 +15,7 @@ export const Layout = () => {
           <CustomLink to="/profile">Profile</CustomLink>
           <CustomLink to="/count">Count</CustomLink>
           <CustomLink to="/react-api">React Api</CustomLink>
-          <CustomLink to="/login">Login</CustomLink>
-          <CustomLink to="/register">Sign Up</CustomLink>
+          <AuthStatusLayout />
         </div>
       </header>
       <main className="main">

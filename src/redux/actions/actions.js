@@ -18,6 +18,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
 } from "./actionTypes";
+import { auth } from "../../firebase";
 
 // Экшены чата
 export const add_Chat = (newChat) => ({
@@ -101,3 +102,43 @@ export const logout_success = () => ({
 export const logout_error = () => ({
   type: LOGOUT_ERROR,
 });
+
+//регистрация
+export const registerInitiate = (email, password, displayName) => {
+  return (dispatch) => {
+    dispatch(register_start());
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        user.updateProfile({
+          displayName,
+        });
+        dispatch(register_success(user));
+      })
+
+      .catch((err) => dispatch(register_error(err.message)));
+  };
+};
+
+// Вход
+export const loginInitiate = (email, password) => {
+  return (dispatch) => {
+    dispatch(login_start());
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        dispatch(login_success(user));
+      })
+      .catch((e) => dispatch(login_error(e.message)));
+  };
+};
+// Выход
+export const logoutInitiate = () => {
+  return (dispatch) => {
+    dispatch(logout_start());
+    auth
+      .signOut()
+      .then((resp) => dispatch(logout_success()))
+      .catch((e) => dispatch(logout_error(e.message)));
+  };
+};

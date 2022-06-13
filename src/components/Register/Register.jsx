@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../redux/reducers/userReducer/userSelectors";
-import { registerInitiate } from "../../redux/reducers/userReducer/userReducer";
-// import { NavLink, useNavigate } from "react-router-dom";
+import { registerInitiate } from "../../redux/actions/actions";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [displayName, setDisplayName] = useState("");
@@ -10,17 +10,18 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const user = useSelector(userSelector);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   if (user) {
-  //     navigate("/");
+  //     navigate("/profile");
   //   }
   // }, [user, navigate]);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     dispatch(registerInitiate(email, password, displayName));
+    navigate("/profile");
   };
   return (
     <>
