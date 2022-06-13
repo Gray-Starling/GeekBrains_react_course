@@ -1,4 +1,10 @@
+import { auth } from "../../../firebase";
 import * as type from "../../actions/actionTypes";
+import {
+  register_start,
+  register_success,
+  register_error,
+} from "../../actions/actions";
 const initialState = {
   currentUser: null,
   loadingUser: false,
@@ -30,4 +36,21 @@ export const userReducer = (state = initialState, action) => {
     default:
       return state;
   }
+};
+
+//регистрация
+export const registerInitiate = (email, password, displayName) => {
+  return (dispatch) => {
+    dispatch(register_start());
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        user.updateProfile({
+          displayName,
+        });
+        dispatch(register_success(user));
+      })
+
+      .catch((err) => dispatch(register_error(err.message)));
+  };
 };

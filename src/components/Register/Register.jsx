@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../redux/reducers/userReducer/userSelectors";
-import { registerInitiate } from "../../redux/actions/actions";
+import { registerInitiate } from "../../redux/reducers/userReducer/userReducer";
 // import { NavLink, useNavigate } from "react-router-dom";
 
 export const Register = () => {
