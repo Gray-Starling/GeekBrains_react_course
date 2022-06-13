@@ -8,6 +8,8 @@ import { Profile } from "./pages/Profile/Profile";
 import { ChatPage } from "./components/ChatPage/ChatPage";
 import { Count } from "./pages/Count/Count";
 import { ReactApi } from "./pages/ReactApi/ReactApi";
+import { LoginPage } from "./pages/LoginPage/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 
 export const App = () => {
   return (
@@ -20,6 +22,8 @@ export const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/count" element={<Count />} />
           <Route path="/react-api" element={<ReactApi />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

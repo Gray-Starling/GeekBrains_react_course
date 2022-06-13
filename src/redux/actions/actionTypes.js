@@ -14,3 +14,7 @@ export const DECREASE_COUNT = "DECREASE_COUNT";
 export const GET_POSTS = "GET_POSTS";
 export const LOADING_POSTS = "LOADING_POSTS";
 export const ERROR_POSTS = "ERROR_POSTS";
+
+export const REGISTER_START = "REGISTER_START";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_ERROR = "REGISTER_ERROR";

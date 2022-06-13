@@ -1,3 +1,4 @@
+import { auth } from "../../firebase";
 import {
   ADD_CHAT,
   DELETE_CHAT,
@@ -8,6 +9,9 @@ import {
   GET_POSTS,
   LOADING_POSTS,
   ERROR_POSTS,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR,
 } from "./actionTypes";
 
 // Экшены чата
@@ -49,3 +53,34 @@ export const error_posts = (err) => ({
   type: ERROR_POSTS,
   payload: err.toString(),
 });
+
+export const register_start = () => ({
+  type: REGISTER_START,
+});
+
+export const register_success = (user) => ({
+  type: REGISTER_SUCCESS,
+  payload: user,
+});
+
+export const register_error = (err) => ({
+  type: REGISTER_ERROR,
+  payload: err,
+});
+
+//регистрация
+export const registerInitiate = (email, password, displayName) => {
+  return (dispatch) => {
+    dispatch(register_start());
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        user.updateProfile({
+          displayName,
+        });
+        dispatch(register_success(user));
+      })
+
+      .catch((err) => dispatch(register_error(err.message)));
+  };
+};
