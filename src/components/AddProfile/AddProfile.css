@@ -1,0 +1,17 @@
+.addProfile-form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+.addProfile-form input {
+  margin: 3px 0;
+}
+
+.addProfile-form textarea {
+  height: 200px;
+}
+
+.addProfile-form button {
+  margin-top: 20px;
+}
