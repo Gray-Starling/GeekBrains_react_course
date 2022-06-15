@@ -1,44 +1,25 @@
-import {
-  ADD_CHAT,
-  DELETE_CHAT,
-  ADD_MESSAGE,
-  ADD_MESSAGE_FROM_BOT,
-  DECREASE_COUNT,
-  INCREASE_COUNT,
-  GET_POSTS,
-  LOADING_POSTS,
-  ERROR_POSTS,
-  REGISTER_START,
-  REGISTER_SUCCESS,
-  REGISTER_ERROR,
-  LOGIN_START,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGOUT_START,
-  LOGOUT_SUCCESS,
-  LOGOUT_ERROR,
-} from "./actionTypes";
+import * as types from "./actionTypes";
 import { auth } from "../../firebase";
 
 // Экшены чата
 export const add_Chat = (newChat) => ({
-  type: ADD_CHAT,
+  type: types.ADD_CHAT,
   payload: newChat,
 });
 
 export const remove_Chat = (id) => ({
-  type: DELETE_CHAT,
+  type: types.DELETE_CHAT,
   payload: id,
 });
 
 // Экшены сообщений
 export const add_Message = (message) => ({
-  type: ADD_MESSAGE,
+  type: types.ADD_MESSAGE,
   payload: message,
 });
 
 export const add_Message_From_Bot = (messageFromBot) => ({
-  type: ADD_MESSAGE_FROM_BOT,
+  type: types.ADD_MESSAGE_FROM_BOT,
   payload: messageFromBot,
   meta: {
     delay: 1500,
@@ -46,61 +27,61 @@ export const add_Message_From_Bot = (messageFromBot) => ({
 });
 
 // Экшены счетчика
-export const decrease_Count = () => ({ type: DECREASE_COUNT });
+export const decrease_Count = () => ({ type: types.DECREASE_COUNT });
 
-export const increase_Count = () => ({ type: INCREASE_COUNT });
+export const increase_Count = () => ({ type: types.INCREASE_COUNT });
 
 // Экшены постов
-export const get_posts = (data) => ({ type: GET_POSTS, payload: data });
+export const get_posts = (data) => ({ type: types.GET_POSTS, payload: data });
 
-export const load_posts = () => ({ type: LOADING_POSTS });
+export const load_posts = () => ({ type: types.LOADING_POSTS });
 
 export const error_posts = (err) => ({
-  type: ERROR_POSTS,
+  type: types.ERROR_POSTS,
   payload: err.toString(),
 });
 
 // Экшены регистрации пользователя
 export const register_start = () => ({
-  type: REGISTER_START,
+  type: types.REGISTER_START,
 });
 
 export const register_success = (user) => ({
-  type: REGISTER_SUCCESS,
+  type: types.REGISTER_SUCCESS,
   payload: user,
 });
 
 export const register_error = (err) => ({
-  type: REGISTER_ERROR,
+  type: types.REGISTER_ERROR,
   payload: err,
 });
 
 // Экшены входа пользователя
 export const login_start = () => ({
-  type: LOGIN_START,
+  type: types.LOGIN_START,
 });
 
 export const login_success = (user) => ({
-  type: LOGIN_SUCCESS,
+  type: types.LOGIN_SUCCESS,
   payload: user,
 });
 
 export const login_error = (err) => ({
-  type: LOGIN_ERROR,
+  type: types.LOGIN_ERROR,
   payload: err,
 });
 
 // Экшены вЫхода пользователя
 export const logout_start = () => ({
-  type: LOGOUT_START,
+  type: types.LOGOUT_START,
 });
 
 export const logout_success = () => ({
-  type: LOGOUT_SUCCESS,
+  type: types.LOGOUT_SUCCESS,
 });
 
 export const logout_error = () => ({
-  type: LOGOUT_ERROR,
+  type: types.LOGOUT_ERROR,
 });
 
 //регистрация
