@@ -2,9 +2,13 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { CustomLink } from "../CustomLink/CustomLink";
 import "./Layout.css";
-import { AuthStatusLayout } from "../AuthStatusLayout/AuthStatusLayout";
+import { useSelector } from "react-redux";
+import { userSelector } from "../../redux/reducers/userReducer/userSelectors";
+import { useLogoutFunc } from "../../hooks/useLogoutFunc";
 
 export const Layout = () => {
+  const user = useSelector(userSelector);
+  const { logOutFunctionHook } = useLogoutFunc();
   return (
     <>
       <header className="header">
@@ -12,10 +16,19 @@ export const Layout = () => {
         <div className="nav">
           <CustomLink to="/">Home</CustomLink>
           <CustomLink to="/chatlist">Chats</CustomLink>
-          <CustomLink to="/profile">Profile</CustomLink>
           <CustomLink to="/count">Count</CustomLink>
           <CustomLink to="/react-api">React Api</CustomLink>
-          <AuthStatusLayout />
+          <CustomLink to="/profile">Profile</CustomLink>
+          {user ? (
+            <CustomLink to="/login" onClick={logOutFunctionHook}>
+              Выход
+            </CustomLink>
+          ) : (
+            <>
+              <CustomLink to="/login">Login</CustomLink>
+              <CustomLink to="/register">Sign Up</CustomLink>
+            </>
+          )}
         </div>
       </header>
       <main className="main">

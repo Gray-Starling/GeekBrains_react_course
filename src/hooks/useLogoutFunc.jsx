@@ -14,7 +14,7 @@ export const useLogoutFunc = () => {
     }
     setTimeout(() => {
       navigate("/login");
-    }, 100);
+    }, 2000);
   };
   return {
     logOutFunctionHook: () => handleLogOut(),

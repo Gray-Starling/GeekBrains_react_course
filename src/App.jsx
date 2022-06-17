@@ -10,6 +10,8 @@ import { Count } from "./pages/Count/Count";
 import { ReactApi } from "./pages/ReactApi/ReactApi";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
+import { ProtectedRoutes } from "./components/ProtectedRoutes/ProtectedRoutes";
+import { AddProfile } from "./components/AddProfile/AddProfile";
 
 export const App = () => {
   return (
@@ -19,11 +21,26 @@ export const App = () => {
           <Route index element={<Home />} />
           <Route path="/chatlist" element={<ChatList />} />
           <Route path="/chatlist/:title" element={<ChatPage />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoutes>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
           <Route path="/count" element={<Count />} />
           <Route path="/react-api" element={<ReactApi />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="/add_profile/:userName"
+            element={
+              <ProtectedRoutes>
+                <AddProfile />
+              </ProtectedRoutes>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
